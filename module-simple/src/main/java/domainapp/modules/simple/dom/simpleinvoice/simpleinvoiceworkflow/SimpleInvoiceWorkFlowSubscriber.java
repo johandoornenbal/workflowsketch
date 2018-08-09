@@ -18,7 +18,8 @@ public class SimpleInvoiceWorkFlowSubscriber extends AbstractSubscriber {
     public void onUpdatedEvent(final SimpleInvoice.Updated e){
         if (e.getEventPhase().isExecuted()) {
             simpleInvoiceStateMachine.transition(e.getSource());
-            simpleInvoiceTaskService.maintainTasksFor(e.getSource(), determineActorIfAny(e));
+            Person actor = determineActorIfAny(e);
+            simpleInvoiceTaskService.maintainTasksFor(e.getSource(), actor);
         }
     }
 

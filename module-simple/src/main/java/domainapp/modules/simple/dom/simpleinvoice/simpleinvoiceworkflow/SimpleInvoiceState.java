@@ -134,7 +134,7 @@ public enum SimpleInvoiceState implements WorkFlowState {
             @Override public boolean isSatisfiedFor(final WithWorkFlow domainEntity) {
                 SimpleInvoice invoice = (SimpleInvoice) domainEntity;
                 if (invoice.getRejectedOn()!=null) return false; // redundant, but more explicit
-                if (invoice.getApprovedByManagerOn()!=null && invoice.getAmount().compareTo(new BigDecimal("10000.00"))>=0){
+                if (invoice.getApprovedByManagerOn()!=null && invoice.getAmount()!=null && invoice.getAmount().compareTo(new BigDecimal("10000.00"))>=0){
                     return true;
                 }
                 return false;

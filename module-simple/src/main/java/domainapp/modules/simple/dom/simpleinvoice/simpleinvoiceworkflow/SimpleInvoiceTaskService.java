@@ -38,7 +38,10 @@ public class SimpleInvoiceTaskService implements WorkFlowTaskService{
     private void cleanUpTasksFor(final SimpleInvoice invoice) {
         List<SimpleInvoiceTask> tasksForObj = simpleInvoiceTaskRepository.findByInvoice(invoice);
         for (SimpleInvoiceTask task : tasksForObj){
-            if (invoice.getInvoiceState()!=null && !task.applicableForStates().contains(invoice.getInvoiceState())){
+            if (invoice.getInvoiceState()!=null &&
+                    (!task.applicableForStates().contains(invoice.getInvoiceState())
+                    || (invoice.getInvoiceState().hasTaskFor()!=null && invoice.getInvoiceState().hasTaskFor()!=task.getAssignedToRole()))
+                    ){
                 repositoryService.removeAndFlush(task);
             }
         }

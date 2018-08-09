@@ -57,7 +57,7 @@ public class SimpleInvoiceTaskRepository {
         serviceRegistry2.injectServicesInto(simpleInvoiceTask);
         simpleInvoiceTask.setInvoice(invoice);
         simpleInvoiceTask.setAssignedToRole(role);
-        repositoryService.persist(simpleInvoiceTask);
+        repositoryService.persistAndFlush(simpleInvoiceTask);
         return simpleInvoiceTask;
     }
 

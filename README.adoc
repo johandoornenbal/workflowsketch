@@ -4,7 +4,7 @@ image:/application/docs/marble_slide.jpg[with="100%]
 
 1. Use a statemachine that returns the state of a given domain entity
 2. The statemachine uses the domain entity as the single entry-point for required data
-3. The statemachine sets the (next) state on the domain
+3. The statemachine sets the (next) state on the domain entity
 4. The statemachine should always try to advance through the workflow states as far as possible (the 'marble slide' model)
 so: either it reaches an endpoint in the workflow, or meets an unsatisfied guard when attempting to do so
 This is behaviour is implemented by

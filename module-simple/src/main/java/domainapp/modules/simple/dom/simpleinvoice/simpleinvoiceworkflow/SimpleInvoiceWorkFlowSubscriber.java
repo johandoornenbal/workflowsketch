@@ -25,7 +25,7 @@ public class SimpleInvoiceWorkFlowSubscriber extends AbstractSubscriber {
 
 
     private Person determineActorIfAny(final SimpleInvoice.Updated e){
-        if (!e.getArguments().isEmpty() && e.getArguments().get(0).getClass().getTypeName().contains("domainapp.modules.simple.dom.simpleinvoice.Person")) {
+        if (!e.getArguments().isEmpty() && e.getArguments().get(0)!=null && e.getArguments().get(0).getClass().getTypeName().contains("domainapp.modules.simple.dom.simpleinvoice.Person")) {
             return (Person) e.getArguments().get(0);
         }
         else {
